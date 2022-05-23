@@ -8,10 +8,10 @@ import java.nio.charset.StandardCharsets;
 
 public class CliEmitter extends Client {
 
-    ClientType clientType = ClientType.EMMITER_CLI;
+    ClientType clientType = ClientType.EMITTER_CLI;
 
-    public CliEmitter(String host, String path) throws IOException {
-        super(host, path);
+    public CliEmitter(String host, String path, int port) throws IOException {
+        super(host, path, port);
 
         sendClientTypeAndFile();
     }
@@ -22,7 +22,7 @@ public class CliEmitter extends Client {
         // Get all content bytes
 
         //Client type
-        byte[] clientTypeBytes = this.clientType.type.getBytes(StandardCharsets.UTF_8);
+        byte[] clientTypeBytes = this.clientType.name().getBytes(StandardCharsets.UTF_8);
 
         // File Name
         String fileName = this.file.getName();
@@ -36,13 +36,13 @@ public class CliEmitter extends Client {
             dataOutputStream.writeInt(clientTypeBytes.length);
             dataOutputStream.write(clientTypeBytes);
 
-            // Sending File Name
+  /*          // Sending File Name
             dataOutputStream.writeInt(fileNameBytes.length);
             dataOutputStream.write(fileBytes);
 
             // Sending File
             dataOutputStream.writeInt(fileBytes.length);
-            dataOutputStream.write(fileBytes);
+            dataOutputStream.write(fileBytes);*/
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -2,40 +2,18 @@ package main.server;
 
 import enums.ClientType;
 
-import java.io.*;
-import java.net.ServerSocket;
+import java.io.DataInputStream;
+import java.io.IOException;
 import java.net.Socket;
-import java.util.ArrayList;
 
 public class ConnectionHandler {
+    protected ClientType clientType;
+    protected DataInputStream dataInputStream;
+    protected Socket client;
 
-    private Socket client;
-    private InputStreamReader in;
-    private PrintWriter out;
+    public ConnectionHandler(Socket socket) throws IOException {
 
-    private ClientType clientType;
 
-    public ConnectionHandler(ServerSocket server) {
 
     }
-
-    public ConnectionHandler (Socket client, ClientType clientType) {
-        this.clientType = clientType;
-        this.client = client;
-    }
-
-    public void run() {
-        try {
-            out = new PrintWriter(client.getOutputStream(), true);
-            in = new InputStreamReader(client.getInputStream());
-
-            out.println("Hello client");
-
-
-
-        } catch (IOException e) {
-            // TODO handle
-        }
-    }
-
 }

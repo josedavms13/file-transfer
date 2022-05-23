@@ -11,8 +11,7 @@ public class Client   {
     protected DataOutputStream dataOutputStream;
     protected File file;
 
-    public Client (String host, String path) throws IOException {
-        int port = 4081;
+    public Client (String host, String path, int port) throws IOException {
         this.socket = new Socket(host, port);
         dataOutputStream = new DataOutputStream(socket.getOutputStream());
         file = new File(path);

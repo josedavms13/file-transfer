@@ -10,11 +10,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8270b1b0-9655-44e7-84aa-01ef6e17e1cd" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/server/clients/Emitter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/main/server/clients/ServerClient.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/enums/ClientType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/ClientType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/client/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/client/emitter/CliEmitter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/client/emitter/CliEmitter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/client/emitter/WebEmitter.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/server/ConnectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/server/ConnectionHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/server/Server.java" afterDir="false" />
     </list>
@@ -62,7 +64,7 @@
     <configuration name="Client" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="FileTransfer" />
-      <option name="PROGRAM_PARAMETERS" value="-c path 4040" />
+      <option name="PROGRAM_PARAMETERS" value="-e localhost &quot;C:\Users\jose.esmoris\Pictures\Screenshot 2021-12-20 113634.png&quot;" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="main.*" />
@@ -101,6 +103,18 @@
       <option name="presentableId" value="Default" />
       <updated>1652901317281</updated>
     </task>
+    <task id="LOCAL-00001" summary="Patch: Client CliEmitter done">
+      <created>1653333813404</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1653333813404</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Patch: Client CliEmitter done" />
+    <option name="LAST_COMMIT_MESSAGE" value="Patch: Client CliEmitter done" />
   </component>
 </project>
