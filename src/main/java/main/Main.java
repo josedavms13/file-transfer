@@ -19,7 +19,7 @@ public class Main {
             case "-s" :
                 System.out.println("Server");
                 Server server = new Server(PORT);
-            break;
+                break;
 
             case "-e":
 

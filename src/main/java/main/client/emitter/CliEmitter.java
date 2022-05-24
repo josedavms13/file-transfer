@@ -3,13 +3,14 @@ package main.client.emitter;
 import enums.ClientType;
 import main.client.Client;
 
-import java.io.IOException;
+import java.io.*;
 import java.nio.charset.StandardCharsets;
 
 public class CliEmitter extends Client {
 
     ClientType clientType = ClientType.EMITTER_CLI;
-
+    private BufferedReader in;
+    private PrintWriter out;
     public CliEmitter(String host, String path, int port) throws IOException {
         super(host, path, port);
 
@@ -26,7 +27,7 @@ public class CliEmitter extends Client {
 
         // File Name
         String fileName = this.file.getName();
-        byte[] fileNameBytes = fileName.getBytes(StandardCharsets.UTF_8);
+        byte[] fileNameBytes = fileName.getBytes();
 
         // File
         byte[] fileBytes = new byte[(int) this.file.length()];
@@ -36,13 +37,18 @@ public class CliEmitter extends Client {
             dataOutputStream.writeInt(clientTypeBytes.length);
             dataOutputStream.write(clientTypeBytes);
 
-  /*          // Sending File Name
+            // Sending File Name
             dataOutputStream.writeInt(fileNameBytes.length);
-            dataOutputStream.write(fileBytes);
+            dataOutputStream.write(fileNameBytes);
 
             // Sending File
             dataOutputStream.writeInt(fileBytes.length);
-            dataOutputStream.write(fileBytes);*/
+            dataOutputStream.write(fileBytes);
+
+            // Wait to se receivers
+
+
+
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

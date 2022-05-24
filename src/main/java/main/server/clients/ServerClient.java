@@ -1,8 +1,12 @@
 package main.server.clients;
 
-public class ServerClient implements Runnable{
-    @Override
-    public void run() {
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
 
-    }
+public class ServerClient {
+
+    protected DataOutputStream dataOutputStream;
+    protected DataInputStream dataInputStream;
+
+
 }
