@@ -21,7 +21,6 @@ public class Emitter extends ServerClient{
         dataInputStream = new DataInputStream(socket.getInputStream());
         dataOutputStream = new DataOutputStream(socket.getOutputStream());
 
-        in = new BufferedReader(new InputStreamReader(dataInputStream));
         setUp();
 
     }

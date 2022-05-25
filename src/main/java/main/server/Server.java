@@ -4,8 +4,8 @@ import com.google.common.io.Files;
 import enums.ClientType;
 import enums.StatusCode;
 import main.server.clients.Emitter;
+import main.server.clients.Receiver;
 
-import javax.sound.midi.Receiver;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -55,7 +55,7 @@ public class Server {
 
 
                     } else if (clientType.equalsIgnoreCase(ClientType.RECEIVER.toString())) {
-                        this.clientReceiverSetUp();
+                        this.clientReceiverSetUp(clientSocket);
 
                     }
                 }
@@ -68,7 +68,6 @@ public class Server {
         }
     }
 
-
     private void clientEmitterSetUp(Socket socket) throws IOException {
             System.out.println("Client is a emitter");
             this.emitter = new Emitter(socket);
@@ -77,40 +76,30 @@ public class Server {
                 emitter.sendStatusCode(StatusCode.RECEIVED);
                 isFileReadyToSend = true;
                 new Thread(()-> {
-
                     try {
-//                        while (receivers.size() <= 0) {
+                        while (receivers.size() <= 0) {
                             int statusCode = emitter.getStatusCode();
                             System.out.println("Status Code: " + statusCode);
 
-                            String toSaveIn = "C:\\Users\\josed\\Documents\\DESARROLLO\\JAVA\\FileTransfer\\file-transfer\\SampleFolder\\" + emitter.getFileName();
-                            System.out.println("IT will be save in " + toSaveIn);
-                            File file = new File(toSaveIn);
-                            Files.write(emitter.getFileBytes(), file);
 
-                        emitter.sendStatusCode(StatusCode.OK);
-//                        }
+                        }
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }
-
                 }).start();
             }
 
     }
 
-    private void clientReceiverSetUp() {
+    private void clientReceiverSetUp(Socket socket) throws IOException {
+        System.out.println("A new receiver has arrived");
+        new Thread(()-> {
+            try {
+                receivers.add(new Receiver(socket));
 
-
-        Runnable clientReceiver = () -> {
-            System.out.println("Client is receiver");
-
-
-
-
-
-        };
-
-
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }).start();
     }
 }

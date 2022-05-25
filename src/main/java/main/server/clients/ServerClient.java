@@ -1,7 +1,10 @@
 package main.server.clients;
 
+import enums.StatusCode;
+
 import java.io.*;
 import java.net.Socket;
+import java.util.Arrays;
 
 public class ServerClient {
 
@@ -21,5 +24,9 @@ public class ServerClient {
 
     protected void closeConnection() throws IOException {
         this.socket.close();
+    }
+
+    protected StatusCode getStatusCode(int statusCode) {
+        return Arrays.stream(StatusCode.values()).filter(stCode -> stCode.code == statusCode).findAny().get();
     }
 }

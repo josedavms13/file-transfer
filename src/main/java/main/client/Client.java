@@ -1,6 +1,12 @@
 package main.client;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
 import java.net.Socket;
 
 public class Client   {
@@ -11,15 +17,14 @@ public class Client   {
 
     protected BufferedReader in;
     protected BufferedWriter out;
-    protected File file;
 
-    public Client (String host, String path, int port) throws IOException {
+    public Client (String host, int port) throws IOException {
+        System.out.println(port);
         this.socket = new Socket(host, port);
         dataOutputStream = new DataOutputStream(socket.getOutputStream());
         dataInputStream = new DataInputStream(socket.getInputStream());
         in = new BufferedReader(new InputStreamReader(dataInputStream));
         out = new BufferedWriter(new OutputStreamWriter(dataOutputStream));
-        file = new File(path);
     }
 
     protected void closeEverything(){

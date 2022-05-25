@@ -4,22 +4,21 @@ import enums.ClientType;
 import enums.StatusCode;
 import main.client.Client;
 
-import java.io.*;
+import java.io.File;
+import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.nio.file.Files;
 import java.util.Scanner;
 
 public class CliEmitter extends Client {
 
     ClientType clientType = ClientType.EMITTER_CLI;
     boolean hasServerEmittedRight = false;
+    private String path;
 
-
-    private FileOutputStream fileOutputStream;
     public CliEmitter(String host, String path, int port) throws IOException {
-        super(host, path, port);
+        super(host, port);
+        this.path = path;
         sendClientTypeAndFile();
-
     }
 
 
@@ -30,8 +29,10 @@ public class CliEmitter extends Client {
         //Client type
         byte[] clientTypeBytes = this.clientType.name().getBytes(StandardCharsets.UTF_8);
 
+
         // File Name
-        String fileName = this.file.getName();
+        File file = new File(path);
+        String fileName = file.getName();
         byte[] fileNameBytes = fileName.getBytes();
 
         // File
@@ -101,6 +102,7 @@ public class CliEmitter extends Client {
                     if (serverStatusCode == StatusCode.OK.code) {
                         hasServerEmittedRight = true;
                         listening.interrupt();
+                        socket.close();
                     } else {
                         System.out.println("Receivers aren't ready yet, pleas wait");
                     }
