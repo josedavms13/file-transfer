@@ -1,13 +1,12 @@
 package main.server;
 
+import com.google.common.io.Files;
 import enums.ClientType;
 import enums.StatusCode;
 import main.server.clients.Emitter;
 
 import javax.sound.midi.Receiver;
-import java.io.DataInputStream;
-import java.io.DataOutputStream;
-import java.io.IOException;
+import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.util.ArrayList;
@@ -23,7 +22,6 @@ public class Server {
 
     protected DataInputStream dataInputStream;
     protected DataOutputStream dataOutputStream;
-
 
     private Emitter emitter;
     private List<Receiver> receivers = new ArrayList<>();
@@ -44,7 +42,6 @@ public class Server {
                 clientSocket = serverSocket.accept();
 
                 dataInputStream = new DataInputStream(clientSocket.getInputStream());
-
                 //Client type
                 int clientTypeLength = dataInputStream.readInt();
                 if (clientTypeLength > 0) {
@@ -82,11 +79,17 @@ public class Server {
                 new Thread(()-> {
 
                     try {
-                        while (receivers.size() <= 0) {
+//                        while (receivers.size() <= 0) {
                             int statusCode = emitter.getStatusCode();
                             System.out.println("Status Code: " + statusCode);
-                            emitter.sendStatusCode(StatusCode.DIDNT_SEND);
-                        }
+
+                            String toSaveIn = "C:\\Users\\josed\\Documents\\DESARROLLO\\JAVA\\FileTransfer\\file-transfer\\SampleFolder\\" + emitter.getFileName();
+                            System.out.println("IT will be save in " + toSaveIn);
+                            File file = new File(toSaveIn);
+                            Files.write(emitter.getFileBytes(), file);
+
+                        emitter.sendStatusCode(StatusCode.OK);
+//                        }
                     } catch (IOException e) {
                         throw new RuntimeException(e);
                     }

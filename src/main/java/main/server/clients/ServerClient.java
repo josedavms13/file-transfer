@@ -7,6 +7,8 @@ public class ServerClient {
 
     protected DataOutputStream dataOutputStream;
     protected DataInputStream dataInputStream;
+    protected FileOutputStream fileOutputStream;
+    protected FileInputStream fileInputStream;
 
     protected BufferedReader in;
     protected BufferedWriter out;

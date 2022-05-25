@@ -5,10 +5,12 @@ import enums.StatusCode;
 
 import java.io.*;
 import java.net.Socket;
+import java.nio.file.Files;
 
 public class Emitter extends ServerClient{
 
     private String fileName;
+
     private byte[] fileBytes;
     private int fileLength;
 

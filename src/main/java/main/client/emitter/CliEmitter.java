@@ -6,6 +6,7 @@ import main.client.Client;
 
 import java.io.*;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.Scanner;
 
 public class CliEmitter extends Client {
@@ -13,14 +14,16 @@ public class CliEmitter extends Client {
     ClientType clientType = ClientType.EMITTER_CLI;
     boolean hasServerEmittedRight = false;
 
+
+    private FileOutputStream fileOutputStream;
     public CliEmitter(String host, String path, int port) throws IOException {
         super(host, path, port);
-
         sendClientTypeAndFile();
+
     }
 
 
-    private void sendClientTypeAndFile() {
+    private void sendClientTypeAndFile() throws IOException {
 
         // Get all content bytes
 
@@ -32,7 +35,7 @@ public class CliEmitter extends Client {
         byte[] fileNameBytes = fileName.getBytes();
 
         // File
-        byte[] fileBytes = new byte[(int) this.file.length()];
+        byte[] fileBytes = java.nio.file.Files.readAllBytes(file.toPath());
 
         try {
             // Sending ClientType
@@ -44,8 +47,10 @@ public class CliEmitter extends Client {
             dataOutputStream.write(fileNameBytes);
 
             // Sending File
+
             dataOutputStream.writeInt(fileBytes.length);
             dataOutputStream.write(fileBytes);
+
 
             // Wait to se receivers
             int statusResponse = dataInputStream.readInt();
