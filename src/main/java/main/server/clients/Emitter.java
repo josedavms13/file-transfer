@@ -1,24 +1,56 @@
 package main.server.clients;
 
-import java.io.File;
+import enums.ClientType;
+import enums.StatusCode;
+
+import java.io.*;
 import java.net.Socket;
 
 public class Emitter extends ServerClient{
 
-    private Socket socket;
     private String fileName;
+    private byte[] fileBytes;
+    private int fileLength;
 
-    public Emitter(Socket socket, String fileName, File file) {
-        this.socket = socket;
-        this.fileName = fileName;
-        this.file = file;
+
+    public Emitter(Socket socket) throws IOException {
+        super(socket);
+
+        dataInputStream = new DataInputStream(socket.getInputStream());
+        dataOutputStream = new DataOutputStream(socket.getOutputStream());
+
+        in = new BufferedReader(new InputStreamReader(dataInputStream));
+        setUp();
+
     }
 
-    private File file;
+    private void setUp() throws IOException {
+        int fileNameLength = dataInputStream.readInt();
+        byte[] fileNameBytes = new byte[fileNameLength];
+        dataInputStream.readFully(fileNameBytes, 0, fileNameLength);
+        fileName = new String(fileNameBytes);
 
-    public Emitter(Socket socket) {
-        this.socket = socket;
+        fileLength = dataInputStream.readInt();
+        fileBytes = new byte[fileLength];
+        dataInputStream.readFully(fileBytes, 0, fileLength);
     }
 
+    public void sendStatusCode(StatusCode statusCode) throws IOException {
+        dataOutputStream.writeInt(statusCode.code);
+    }
 
+    public int getStatusCode() throws IOException {
+        return dataInputStream.readInt();
+    }
+    public String getFileName() {
+        return fileName;
+    }
+
+    public byte[] getFileBytes() {
+        return fileBytes;
+    }
+
+    public int getFileLength() {
+        return fileLength;
+    }
 }

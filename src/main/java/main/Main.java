@@ -15,28 +15,17 @@ public class Main {
     public static void main(String[] args) throws IOException {
         System.out.println(Arrays.toString(args));
 
-        switch(args[0]) {
-            case "-s" :
+        switch (args[0]) {
+            case "-s" -> {
                 System.out.println("Server");
                 Server server = new Server(PORT);
-                break;
-
-            case "-e":
-
-                System.out.println("cli emitter");
+            }
+            case "-e" -> {
+                System.out.println("Sat up as CLI EMITTER");
                 CliEmitter client = new CliEmitter(args[1], args[2], PORT);
-
-
-            break;
-
-            case "-r":
-
-                System.out.println("cli receiver");
-
-            break;
-
-            default :
-                System.out.println("Missing arguments");
+            }
+            case "-r" -> System.out.println("cli receiver");
+            default -> System.out.println("Missing arguments");
         }
     }
 }
