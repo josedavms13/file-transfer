@@ -10,15 +10,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8270b1b0-9655-44e7-84aa-01ef6e17e1cd" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/main/client/emitter/CliReceiver.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/main/server/clients/Receiver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/FileTransfer_jar/FileTransfer.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/FileTransfer_jar/FileTransfer.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/enums/StatusCode.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/enums/StatusCode.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/client/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/client/emitter/CliEmitter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/client/emitter/CliEmitter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/client/emitter/CliReceiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/client/emitter/CliReceiver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/server/Server.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/server/clients/Emitter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/server/clients/Emitter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/server/clients/Receiver.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/server/clients/Receiver.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/server/clients/ServerClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/server/clients/ServerClient.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -75,11 +77,11 @@
     &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.fonts.default&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.Receiver">
+  <component name="RunManager" selected="Application.Client">
     <configuration name="Client" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="FileTransfer" />
-      <option name="PROGRAM_PARAMETERS" value="-e localhost &quot;C:\Users\josed\Desktop\Seranu Main Theme.mp3&quot;" />
+      <option name="PROGRAM_PARAMETERS" value="-e localhost &quot;C:\Users\jose.esmoris\Downloads\image.png&quot;" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="main.*" />
@@ -193,14 +195,19 @@
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/main/client/emitter/CliReceiver.java</url>
-          <line>41</line>
-          <option name="timeStamp" value="4" />
+          <url>file://$PROJECT_DIR$/src/main/java/main/client/Client.java</url>
+          <line>20</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/main/client/emitter/CliReceiver.java</url>
-          <line>40</line>
-          <option name="timeStamp" value="5" />
+          <url>file://$PROJECT_DIR$/src/main/java/main/client/Client.java</url>
+          <line>18</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/main/client/Client.java</url>
+          <line>19</line>
+          <option name="timeStamp" value="8" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -38,17 +38,23 @@ public class CliReceiver extends Client {
             dataOutputStream.write(clientTypeBytes);
 
             // Message from server asking the path to save
-            String input = in.readLine();
-            System.out.println( input);
-            path = scanner.nextLine();
+
+
+            System.out.println("Drop the target folder here ");
+            path = scanner.nextLine().replaceAll("\"", "");
 
             // Send to server status code ok
             dataOutputStream.writeInt(StatusCode.READY_TO_RECEIVE.code);
 
             // Server send fileName to make the path
-            fileName = in.readLine();
-            path = path + "\\" + fileName;
+            int fileNameLength = dataInputStream.readInt();
+            byte[] fileNameByte = new byte[fileNameLength];
+            dataInputStream.readFully(fileNameByte, 0, fileNameLength);
+            fileName = new String(fileNameByte);
 
+            path = path + "\\" + fileName;
+            System.out.println("File Name: " + fileName);
+            System.out.println("File Path "+ path);
             //Receive file
             File file = new File(path);
             int fileLength = dataInputStream.readInt();

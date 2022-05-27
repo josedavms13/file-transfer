@@ -78,10 +78,20 @@ public class Server {
                 new Thread(()-> {
                     try {
                         while (receivers.size() <= 0) {
-                            int statusCode = emitter.getStatusCode();
-                            System.out.println("Status Code: " + statusCode);
+                            StatusCode statusCode = emitter.getStatusCode();
+                            System.out.println("Status Code: "+ statusCode.code + " = " + statusCode.message);
 
+                            if (statusCode.code == StatusCode.DISPATCH_FILE.code) {
+                                for (int i = 0; i < receivers.size(); i ++) {
+                                    StatusCode sendFileStatus = receivers.get(i).sendFile(emitter.getFileName(), emitter.getFileBytes());
+                                    System.out.println("Receiver number: " + i + " Returned " + sendFileStatus.message);
+//                                    receivers.get(0).closeConnection();
+                                }
+                            }
 
+//                            emitter.closeConnection();
+
+                            serverSocket.close();
                         }
                     } catch (IOException e) {
                         throw new RuntimeException(e);
@@ -96,6 +106,8 @@ public class Server {
         new Thread(()-> {
             try {
                 receivers.add(new Receiver(socket));
+                StatusCode statusCode = emitter.sendNumberOfReceivers(receivers.size());
+                System.out.println("Message sent: " + statusCode);
 
             } catch (IOException e) {
                 throw new RuntimeException(e);

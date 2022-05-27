@@ -15,16 +15,12 @@ public class Client   {
     protected DataOutputStream dataOutputStream;
     protected DataInputStream dataInputStream;
 
-    protected BufferedReader in;
-    protected BufferedWriter out;
-
     public Client (String host, int port) throws IOException {
         System.out.println(port);
+        System.out.println(host);
         this.socket = new Socket(host, port);
         dataOutputStream = new DataOutputStream(socket.getOutputStream());
         dataInputStream = new DataInputStream(socket.getInputStream());
-        in = new BufferedReader(new InputStreamReader(dataInputStream));
-        out = new BufferedWriter(new OutputStreamWriter(dataOutputStream));
     }
 
     protected void closeEverything(){

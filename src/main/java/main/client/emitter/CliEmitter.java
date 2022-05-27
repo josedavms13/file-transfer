@@ -81,10 +81,11 @@ public class CliEmitter extends Client {
         System.out.println("waiting receivers...");
         return new Thread(() -> {
             try {
-                String incommingMessage = in.readLine();
-                System.out.println(incommingMessage + " receivers pending");
+                int numberOfReceivers = dataInputStream.readInt();
+                System.out.println(numberOfReceivers + " receivers pending");
+                dataOutputStream.writeInt(StatusCode.OK.code);
             } catch (IOException e) {
-                closeEverything();
+//                closeEverything();
                 throw new RuntimeException(e);
             }
         });

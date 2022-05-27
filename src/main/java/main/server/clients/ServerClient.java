@@ -13,8 +13,6 @@ public class ServerClient {
     protected FileOutputStream fileOutputStream;
     protected FileInputStream fileInputStream;
 
-    protected BufferedReader in;
-    protected BufferedWriter out;
 
     protected Socket socket;
 
@@ -22,7 +20,7 @@ public class ServerClient {
         this.socket = socket;
     }
 
-    protected void closeConnection() throws IOException {
+    public void closeConnection() throws IOException {
         this.socket.close();
     }
 

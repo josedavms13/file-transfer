@@ -40,8 +40,8 @@ public class Emitter extends ServerClient{
         dataOutputStream.writeInt(statusCode.code);
     }
 
-    public int getStatusCode() throws IOException {
-        return dataInputStream.readInt();
+    public StatusCode getStatusCode() throws IOException {
+        return getStatusCode(dataInputStream.readInt());
     }
     public String getFileName() {
         return fileName;
@@ -53,5 +53,10 @@ public class Emitter extends ServerClient{
 
     public int getFileLength() {
         return fileLength;
+    }
+
+    public StatusCode sendNumberOfReceivers(int receiversCount) throws IOException {
+        dataOutputStream.writeInt(receiversCount);
+        return getStatusCode(dataInputStream.readInt());
     }
 }
